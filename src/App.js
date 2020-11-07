@@ -20,6 +20,8 @@ import { ThemeProvider } from "@material-ui/core";
 import { createMuiTheme } from "@material-ui/core/styles";
 import Brightness3Icon from "@material-ui/icons/Brightness3";
 import Brightness7Icon from "@material-ui/icons/Brightness7";
+import purple from "@material-ui/core/colors/purple";
+import Home from "./components/Home/Home";
 
 const drawerWidth = 240;
 
@@ -27,10 +29,26 @@ const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
   },
+  grow: {
+    flexGrow: 1,
+  },
+  sectionDesktop: {
+    display: "none",
+    [theme.breakpoints.up("md")]: {
+      display: "flex",
+    },
+  },
+  sectionMobile: {
+    display: "flex",
+    [theme.breakpoints.up("md")]: {
+      display: "none",
+    },
+  },
   appBar: {
     transition: theme.transitions.create(["margin", "width"], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
+      color: purple["A200"],
     }),
   },
   appBarShift: {
@@ -77,6 +95,11 @@ const useStyles = makeStyles((theme) => ({
       duration: theme.transitions.duration.enteringScreen,
     }),
     marginLeft: 0,
+  },
+  search: {
+    position: "relative",
+    marginLeft: 0,
+    align: "left",
   },
 }));
 
@@ -135,6 +158,7 @@ function App() {
         <CssBaseline />
         <AppBar
           position="fixed"
+          style={{ backgroundColor: "#e91e63" }}
           className={clsx(classes.appBar, {
             [classes.appBarShift]: open,
           })}
@@ -152,15 +176,17 @@ function App() {
             <Typography variant="h6" noWrap>
               Git Generator
             </Typography>
-
-            <IconButton
-              edge="end"
-              color="inherit"
-              aria-label="mode"
-              onClick={() => setTheme(!theme)}
-            >
-              {icon}
-            </IconButton>
+            <div className={classes.grow} />
+            <div>
+              <IconButton
+                edge="end"
+                color="inherit"
+                aria-label="mode"
+                onClick={() => setTheme(!theme)}
+              >
+                {icon}
+              </IconButton>
+            </div>
           </Toolbar>
         </AppBar>
         <Drawer
@@ -197,8 +223,13 @@ function App() {
         >
           <div className={classes.drawerHeader} />
           <Typography paragraph>
-            <h1 align="center">Start Here!</h1>
-            <div className="buttonItem">
+            {/* <h1 align="center">Start Here!</h1> */}
+            <br />
+            <br />
+            <br />
+            <Home />
+
+            {/* <div className="buttonItem">
               <Button
                 align="center"
                 variant="contained"
@@ -207,7 +238,7 @@ function App() {
               >
                 Enter Username
               </Button>
-            </div>
+            </div> */}
           </Typography>
         </main>
       </div>
