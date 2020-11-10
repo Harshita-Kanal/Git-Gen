@@ -11,9 +11,15 @@ class Generate extends Component {
     super(props);
     this.state = {
       name: "",
+      users: {},
+      img: "",
+      followers: "",
+      following: "",
+      login: "",
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.calcuteValue = this.calcuteValue.bind(this);
   }
 
   handleChange(e) {
@@ -25,13 +31,52 @@ class Generate extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
+    this.calcuteValue();
     this.setState({
       name: "",
     });
     console.log(this.state);
   }
 
+  calcuteValue() {
+    var users = [];
+
+    for (var i = 0; i <= 1; i++) {
+      users.push(prompt("Enter your Github user name"));
+    }
+
+    for (var user of users) {
+      fetch(`https://api.github.com/users/${user}`)
+        .then((response) => {
+          return response.json();
+        })
+        .then((responseJson) => {
+          console.log(responseJson);
+          var res = responseJson;
+          this.setState({
+            users: res,
+            followers: res.followers,
+            following: res.following,
+            img: res.avatar_url,
+            name: res.login,
+          });
+          console.log(res.followers);
+          console.log(res.following);
+        });
+    }
+  }
+
   render() {
+    const isUser = this.state.user;
+    // let usercard;
+    // if (isUser !== null) {
+    //   usercard = (
+
+    //   );
+    // } else {
+    //   usercard = <div></div>;
+    // }
+
     return (
       <div className="generate">
         <h1>Generate your Resume!</h1>
@@ -56,6 +101,21 @@ class Generate extends Component {
             </form>
           </div>
         </Card>
+        <br />
+        <br />
+        {this.state.user ? (
+          <Card>
+            <p>{this.state.name}</p>
+            <p>
+              Followers <h2>{this.state.followers}</h2>
+            </p>
+            <p>
+              Following <h2>{this.state.following}</h2>
+            </p>
+          </Card>
+        ) : (
+          <div></div>
+        )}
       </div>
     );
   }
