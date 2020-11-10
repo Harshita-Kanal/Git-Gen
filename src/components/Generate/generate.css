@@ -1,0 +1,18 @@
+.generate {
+  text-align: center;
+}
+
+.imgItem {
+  height: 200px;
+  width: 200px;
+}
+
+.item {
+  margin: 40px;
+}
+
+.cardItem {
+  min-width: 50%;
+  max-width: 100%;
+  display: inline-block;
+}

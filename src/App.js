@@ -22,9 +22,13 @@ import Brightness3Icon from "@material-ui/icons/Brightness3";
 import Brightness7Icon from "@material-ui/icons/Brightness7";
 import purple from "@material-ui/core/colors/purple";
 import Home from "./components/Home/Home";
+import { BrowserRouter } from "react-router-dom";
+import { Router, Link, Route, Switch, NavLink } from "react-router-dom";
+import Generate from "./components/Generate/Generate";
+import { createBrowserHistory } from "history";
 
 const drawerWidth = 240;
-
+const history = createBrowserHistory();
 const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
@@ -208,12 +212,24 @@ function App() {
             </IconButton>
           </div>
           <Divider />
+
           <List>
-            {["About", "Generate"].map((text) => (
+            {/* {["About", "Generate"].map((text) => (
               <ListItem button key={text}>
                 <ListItemText primary={text} />
               </ListItem>
-            ))}
+            ))} */}
+
+            <ListItem button>
+              <ListItemText>
+                <a href="/generate">Generate</a>
+              </ListItemText>
+            </ListItem>
+            <ListItem button>
+              <ListItemText>
+                <a href="/home">About</a>
+              </ListItemText>
+            </ListItem>
           </List>
         </Drawer>
         <main
@@ -224,10 +240,8 @@ function App() {
           <div className={classes.drawerHeader} />
           <Typography paragraph>
             {/* <h1 align="center">Start Here!</h1> */}
-            <br />
-            <br />
-            <br />
-            <Home />
+
+            {/* <Home /> */}
 
             {/* <div className="buttonItem">
               <Button
@@ -239,6 +253,12 @@ function App() {
                 Enter Username
               </Button>
             </div> */}
+            <BrowserRouter>
+              <Switch>
+                <Route path="/generate" component={Generate} />
+                <Route path="" component={Home} />
+              </Switch>
+            </BrowserRouter>
           </Typography>
         </main>
       </div>
