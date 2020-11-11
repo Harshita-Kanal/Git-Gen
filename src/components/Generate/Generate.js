@@ -68,14 +68,22 @@ class Generate extends Component {
 
   render() {
     const isUser = this.state.user;
-    // let usercard;
-    // if (isUser !== null) {
-    //   usercard = (
-
-    //   );
-    // } else {
-    //   usercard = <div></div>;
-    // }
+    let usercard;
+    if (isUser != null) {
+      usercard = (
+        <Card>
+          <p>{this.state.name}</p>
+          <p>
+            Followers <h2>{this.state.followers}</h2>
+          </p>
+          <p>
+            Following <h2>{this.state.following}</h2>
+          </p>
+        </Card>
+      );
+    } else {
+      usercard = <div></div>;
+    }
 
     return (
       <div className="generate">
@@ -103,19 +111,7 @@ class Generate extends Component {
         </Card>
         <br />
         <br />
-        {this.state.user ? (
-          <Card>
-            <p>{this.state.name}</p>
-            <p>
-              Followers <h2>{this.state.followers}</h2>
-            </p>
-            <p>
-              Following <h2>{this.state.following}</h2>
-            </p>
-          </Card>
-        ) : (
-          <div></div>
-        )}
+        {usercard}
       </div>
     );
   }

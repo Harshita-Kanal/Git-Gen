@@ -14,10 +14,10 @@ const Home = () => {
         <Grid spacing={2} xs={12} sm={6}>
           <img src={Resume} className="Item" />
         </Grid>
-        <Grid>
+        <Grid spacing={2} xs={12} sm={6}>
           <Typography>
             <p className="textItem">
-              Generate your personal resume <br /> from your GitHub Profile
+              Generate your personal resume from your GitHub Profile
             </p>
             <Button href="/generate" variant="contained" color="secondary">
               Get Started!
