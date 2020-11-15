@@ -16,3 +16,18 @@
   max-width: 100%;
   display: inline-block;
 }
+
+.profImg {
+  border-radius: 150px;
+  height: 200px;
+  width: 200px;
+}
+
+.divAlign {
+  text-align: center;
+}
+
+.follow {
+  font-weight: 600;
+  font-size: large;
+}

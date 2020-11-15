@@ -13,6 +13,12 @@
   }
 }
 
+.linkItem:visited {
+  color: #dd0d75;
+}
+.linkItem {
+  color: #dd0d75;
+}
 .iconitem {
   display: flex;
   align-items: flex-end;

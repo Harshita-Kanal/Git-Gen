@@ -222,12 +222,16 @@ function App() {
 
             <ListItem button>
               <ListItemText>
-                <a href="/generate">Generate</a>
+                <a className="linkItem" href="/generate">
+                  Generate
+                </a>
               </ListItemText>
             </ListItem>
             <ListItem button>
               <ListItemText>
-                <a href="/home">About</a>
+                <a className="linkItem" href="/home">
+                  About
+                </a>
               </ListItemText>
             </ListItem>
           </List>
